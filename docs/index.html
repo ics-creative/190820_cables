@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>ICS MEDIA</h1>
+    <div class="content">
+      <canvas id="glcanvas" width="100vw" height="100vh"></canvas>
+    </div>
+
+  <script type="text/javascript" src="js/patch.js"></script>
+
+  <script>
+      /**
+       * Called when there was a cables error.
+       * @param {string} errId - ID of the error, e.g. 'NO_WEBGL' or 'NO_WEBAUDIO'
+       *                         when the browser does not support the used APIs
+       * @param {string} errMsg - The error message
+       */
+      function showError(errId, errMsg) {
+          alert('An error occured: ' + errId + ', ' + errMsg);
+      }
+
+      function patchInitialized() {
+          // You can now access the patch object (CABLES.patch), register variable watchers and so on
+      }
+
+      function patchFinishedLoading() {
+          // The patch is ready now, all assets have been loaded
+      }
+
+      document.addEventListener('DOMContentLoaded', function(event) {
+          CABLES.patch = new CABLES.Patch({
+              patch: CABLES.exportedPatch,
+              prefixAssetPath: '',
+              glCanvasId: 'glcanvas',
+              glCanvasResizeToParent: true,
+              onError: showError,
+              onPatchLoaded: patchInitialized,
+              onFinishedLoading: patchFinishedLoading,
+          });
+      });
+  </script>
+</body>
+</html>

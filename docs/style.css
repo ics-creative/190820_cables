@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    line-height: 4;
+    text-align: center;
+    background: linear-gradient(to right, pink, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.content{
+    height: 500px;
+    background: #eed002;
+}
+canvas{
+    position: absolute;
+    display: block;
+}
